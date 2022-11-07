@@ -4,13 +4,7 @@ Altschool project
 <!-- Back to Top Navigation Anchor -->
 <a name="readme-top"></a>
 
-<!-- Project Shields -->
 
-
-<!-- Project Logo -->
-<
-
-<br />
 
 <div>
   <p align="center">
@@ -64,7 +58,7 @@ Varlef Blog is a safe space for you to explore the thoughts and experiences of f
 
 Authentication is not required to read articles on this blog, but you'll have log in to post, edit or delete your articles.
 
-Ze Blog was built as an exam project by <a href="https://github.com/Akalaehimen">Akala Ehimen</a>, a Backend Engineering student at <a href="https://altschoolafrica.com/schools/engineering">AltSchool Africa</a> who's learning to create magic with the Python Flask framework. 
+Varlef Blog was built as an exam project by <a href="https://github.com/Akalaehimen">Akala Ehimen</a>, a Backend Engineering student at <a href="https://altschoolafrica.com/schools/engineering">AltSchool Africa</a> who's learning to create magic with the Python Flask framework. 
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
