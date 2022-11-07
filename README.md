@@ -5,24 +5,10 @@ Altschool project
 <a name="readme-top"></a>
 
 <!-- Project Shields -->
-<div align="center">
 
-  [![Contributors][contributors-shield]][contributors-url]
-  [![Forks][forks-shield]][forks-url]
-  [![Stargazers][stars-shield]][stars-url]
-  [![Issues][issues-shield]][issues-url]
-  [![MIT License][license-shield]][license-url]
-  [![Twitter][twitter-shield]][twitter-url]
-</div>
 
 <!-- Project Logo -->
-<br />
-<div align="center">
-  
-   <a href="https://github.com/Akalaehimen/Altschool-project#readme">
-    <img src="../static/css/images/572.png" alt="" width="90%" height="30%">
-  </a>
-</div>
+<
 
 <br />
 
@@ -72,13 +58,13 @@ Altschool project
 ---
 
 <!-- About the Blog -->
-## About Ze Blog
+## About Varlef blog
 
 Varlef Blog is a safe space for you to explore the thoughts and experiences of fellow citizens of the internet, and share yours too.
 
 Authentication is not required to read articles on this blog, but you'll have log in to post, edit or delete your articles.
 
-Ze Blog was built as an exam project by <a href="https://github.com/Akalaehimen">Ze Austin</a>, a Backend Engineering student at <a href="https://altschoolafrica.com/schools/engineering">AltSchool Africa</a> who's learning to create magic with the Python Flask framework. 
+Ze Blog was built as an exam project by <a href="https://github.com/Akalaehimen">Akala Ehimen</a>, a Backend Engineering student at <a href="https://altschoolafrica.com/schools/engineering">AltSchool Africa</a> who's learning to create magic with the Python Flask framework. 
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -163,7 +149,7 @@ Distributed under the MIT License. See <a href="https://github.com/Akalaehimen/A
 
 Ehimen - [@EhimenEmmanuel6](https://twitter.com/EhimenEmmanuel6) - ehimenemmanuel85@gmail.com
 
-Project Link: [Ze Blog](https://github.com/Akalaehimen/Altschool-project)
+Project Link: [Varlef blog](https://github.com/Akalaehimen/Altschool-project)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
