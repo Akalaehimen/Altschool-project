@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+<!-- <h3>Blog Post...</h3> -->
+<br/>
+
+        <div class="type">
+        <div class="shadow p-3 mb-5 bg-body rounded"></div>
+
+		<h2>{{ cloth.title }}</h2>
+       <small>By: {{ cloth.author}}<br/>
+        {{ cloth.date_posted}}</small> <br/><br/>
+
+        {{ cloth.content}}<br/><br/>
+        </div><br/>
+        <a href="{{url_for('edit_Lifestyle', id=cloth.id)}}" class="button">Edit Post</a>
+        
+        <a href="{{url_for('delete_Lifestyle', id=cloth.id)}}" class="buttons">Delete Post</a>
+        
+        
+        <a href="{{url_for('Lifestyles')}}" class="button">Back To Blog</a> 
+        <br/><br/>
+        
+		
+
+{% endblock %}

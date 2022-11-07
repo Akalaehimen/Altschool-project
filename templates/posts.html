@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+<!-- <h3>Blog Post...</h3> -->
+<br/>
+{% for post in posts %}
+<div class="div">
+
+		  <h2>{{ post.title }}</h2>
+       <small>By: {{ post.author}}</small><br/><br/>
+
+        {{ post.content}}<br/><br/>
+          
+        <small>{{ post.date_posted}}<br/><br/></small>
+        <a href="{{url_for('post', id=post.id)}}" class="button">Read More</a>
+
+        <a href="{{url_for('delete_post', id=post.id)}}" class="buttons">Delete Post</a>
+
+        <a href="{{url_for('edit_post', id=post.id)}}" class="button">Edit Post</a>
+  </div>
+  <hr><br/>
+        {% endfor %}
+        <br/><br/>
+        {% if current_user.is_authenticated %}
+        <small class="form-group">Like to share a post in this segment?</small> <a href="{{url_for('add_post')}}" class="button">Post</a><br/><br/>
+        {% else %}
+        <!-- <small class="form-group">Like to share a post in this segment?</small> <a href="{{url_for('add_post')}}" class="button">Post</a><br/><br/> -->
+        {% endif %}
+{% endblock %}

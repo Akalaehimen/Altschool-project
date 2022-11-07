@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <title>Login Example</title>
+  </head>
+  <body>
+    <div class="area"></div><nav class="main-menu">
+
+      <ul>
+          <li>
+              <a href="{{url_for('index')}}">
+                  <i class="fa fa-home fa-2x"></i>
+                  <span class="nav-text">
+                      HOME
+                  </span>
+              </a>
+          </li>
+
+          <li>
+            <a href="{{url_for('about')}}">
+                <i class="fa fa-font fa-2x"></i>
+                <span class="nav-text">
+                   ABOUT
+                </span>
+            </a>
+        </li> 
+        {% if current_user.is_authenticated %}
+          <li class="has-subnav">
+              <a href="{{url_for('dashboard')}}">
+                  <i class="fa fa-laptop fa-2x"></i>
+                  <span class="nav-text">
+                      PROFILE
+                  </span>
+              </a>  
+          </li>
+          {% endif %}
+          {% if current_user.is_authenticated %}
+          <!-- <li class="has-subnav">
+              <a href="{{url_for('register')}}">
+                 <i class="fa fa-list fa-2x"></i>
+                  <span class="nav-text">
+                      SIGN UP
+                  </span>
+              </a> -->
+
+            {% else %}
+            <li class="has-subnav">
+                <a href="{{url_for('register')}}">
+                   <i class="fa fa-list fa-2x"></i>
+                    <span class="nav-text">
+                        SIGN UP
+                    </span>
+                </a>
+            {% endif %}
+           
+           {% if current_user.is_authenticated %}
+          <!-- <li>
+              <a href="{{url_for('login')}}">
+                 <i class="fa fa-info fa-2x"></i>
+                  <span class="nav-text">
+                      LOGIN
+                  </span>
+              </a>
+          </li>
+      </ul> -->
+      {% else %}
+      <li>
+        <a href="{{url_for('login')}}">
+           <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+                LOGIN
+            </span>
+        </a>
+         </li>
+        </ul>
+        {% endif %}
+
+
+
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      {% if current_user.is_authenticated %}
+      <ul class="logout">
+          <li>
+             <a href="{{url_for('logout')}}">
+                   <i class="fa fa-power-off fa-2x"></i>
+                  <span class="nav-text">
+                      LOGOUT
+                  </span>
+              </a>
+          </li>  
+      </ul>
+      {% endif %}
+  </nav>
+    <header>
+     <div class="logo">
+        <a href="{{url_for('index')}}">VARLEFblog</a>
+      </div>
+      <div class="nav-item">
+        {% if current_user.is_authenticated %}
+          <a href="{{url_for('posts')}}">NEWS</a>
+          <a href="{{url_for('musics')}}">MUSIC</a>
+          <a href="{{url_for('Sports')}}">SPORT</a>
+          <a href="{{url_for('Lifestyles')}}">LIFESTYLE</a>
+          <a href="{{url_for('Relationships')}}">RELATIONSHIP</a>
+          
+        {% else %}
+        <a href="{{url_for('posts')}}">NEWS</a>
+        <a href="{{url_for('musics')}}">MUSIC</a>
+        <a href="{{url_for('Sports')}}">SPORT</a>
+        <a href="{{url_for('Lifestyles')}}">LIFESTYLE</a>
+        <a href="{{url_for('Relationships')}}">RELATIONSHIP</a>
+        {% endif %}
+      </div>
+    </header>
+    <div class="containers">
+        <!-- <img src="../static/css/images/internet-4463031__480.jpg" alt="" class="containers"> -->
+    <main class="container">
+        <br/><br/>
+        <!-- <img src="../static/css/images/internet-4463031__480.jpg" alt=""> -->
+      {% block content %}
+      
+      {% endblock content %}
+      
+    </main>
+</div>
+<footer class="footer">
+    <div class="copy">Copywright &copy; 2022 Created By Varlefblog</div>
+    <div class="bottom-links">
+      <div class="links">
+        <span>More Info</span>
+        <a href="{{url_for('index')}}">Home</a>
+        <a href="{{url_for('about')}}">About</a>
+        <a href="{{url_for('posts')}}">Trending</a>
+      </div>
+      <div class="links">
+        <span>Connect With Us @</span>
+        <a href="https://www.facebook.com/florence.akala.33"><i class="fa fa-facebook fa-2x"></i></a>
+        <a href="https://twitter.com/EhimenEmmanuel6?t=Mh0wqRKYBkpMEjDTKyaR0Q&s=03"><i class="fa fa-twitter fa-2x"></i></a>
+        <a href="https://www.linkedin.com/in/ehimen-akala-004038231"><i class="fa fa-linkedin fa-2x"></i></a>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

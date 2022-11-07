@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+{% if id == current_user.id %}
+
+	<h2>Update Profile</h2>
+	<br/>
+<div class="shadow p-3 mb-5 bg-body rounded">
+	<form action="/update/{{ name_to_update.id }}" method="POST" enctype="multipart/form-data">
+		{{ form.hidden_tag() }}
+
+		{{ form.username.label(class="form-label") }}
+
+		{{ form.username(class="form-control", value=name_to_update.username) }}
+		<br/>
+
+		{{ form.email.label(class="form-label") }}
+
+		{{ form.email(class="form-control", value=name_to_update.email) }}
+		<br/>
+
+		{{ form.profile_pic.label(class="form-label") }}
+
+		{{ form.profile_pic(class="form-control", value=name_to_update.profile_pic) }}
+		<br/>
+
+		<br/>
+		
+		<div class="button">
+            <input type="submit" value="Update Profile" class="button"/>
+        </div><br/>
+        <div class="buttons">
+		<a href="{{ url_for('delete_post', id=id)}}" >Delete Your Profile</a>
+    </div>
+
+
+	</form>
+</div>
+<br/><br/><br/>
+
+{% else %}
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  Sorry! You Can't Edit This User...
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	<h2>Access Denied!</h2>
+	<p>Sorry, you cannot access this user profile...</p>
+
+{% endif %}
+
+
+{% endblock %}

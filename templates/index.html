@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<img src="../static/css/images/th.jfif" alt="" width="100" class="log" height="80"> <br/><br/>
+{% if current_user.is_authenticated %}
+<h3 class="type">WELCOME! YOU ARE LOGGED IN</h3><br>
+<h4 class="type">Welcome to varlefblog,Where we serve you with the hottest and trending gist in Nigeria
+  ranging from latest news,sport,entertainment and we can also be your number one plug for your fashion and lifestyle
+  stay tuned to our site,Because we promise you premium entertainment with our gists.
+  Here we work tirelesly to keep you updated with the totori going on around you,hang in with us and you would forever
+  appreciate you did so.
+  Our news are utmostly verified and scrutinized befor being shared to our audience thereby we keep a policy
+  strictly on our copyright which is illegal to be used elsewhere.
+  We are one of the best bloggers in nigeria and have bagged numerous award over the few months running,
+  you can also share us your review on aspect you think we can improve on to serve you better via the connect link.
+</h4>
+<br/><br/>
+{% else %}
+  <h2 class="type">WELCOME!</h2><br>
+  <h4 class="type">Welcome to varlefblog,Where we serve you with the hottest and trending gist in Nigeria
+    ranging from latest news,sport,entertainment and we can also be your number one plug for your fashion and lifestyle
+    stay tuned to our site,Because we promise you premium entertainment with our gists.
+    Here we work tirelesly to keep you updated with the totori going on around you,hang in with us and you would forever
+    appreciate you did so.
+    Our news are utmostly verified and scrutinized befor being shared to our audience thereby we keep a policy
+    strictly on our copyright which is illegal to be used elsewhere.
+    We are one of the best bloggers in nigeria and have bagged numerous award over the few months running,
+    you can also share us your review on aspect you think we can improve on to serve you better via the connect link.
+  </h4>
+  <br/><br/>
+{% endif %}
+{% endblock content %}
