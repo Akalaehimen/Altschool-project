@@ -40,7 +40,10 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Sport', backref='poster', lazy=True)
     posts = db.relationship('Lifestyle', backref='poster', lazy=True)
     posts = db.relationship('Comment', backref='poster', lazy=True)
-	  
+    posts = db.relationship('Comment2', backref='poster', lazy=True)  
+    posts = db.relationship('Comment3', backref='poster', lazy=True)  
+    posts = db.relationship('Comment4', backref='poster', lazy=True)  
+    posts = db.relationship('Comment5', backref='poster', lazy=True)  
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
@@ -101,18 +104,53 @@ class Lifestyle(db.Model):
 	# Foreign Key To Link Users (refer to primary key of the user)
 	poster_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-# Create a comment model
+# Create a comment model for news
 class Comment(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	title = db.Column(db.String(255))
 	content = db.Column(db.Text)
 	author = db.Column(db.String(255))
 	date_posted = db.Column(db.DateTime, default=datetime.utcnow)
-	slug = db.Column(db.String(255))
+	# Foreign Key To Link Users (refer to primary key of the user)
+	poster_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+# Create a comment model for music
+class Comment2(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	content = db.Column(db.Text)
+	author = db.Column(db.String(255))
+	date_posted = db.Column(db.DateTime, default=datetime.utcnow)
 	# Foreign Key To Link Users (refer to primary key of the user)
 	poster_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
+# Create a comment model for music
+class Comment3(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	content = db.Column(db.Text)
+	author = db.Column(db.String(255))
+	date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+	# Foreign Key To Link Users (refer to primary key of the user)
+	poster_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+
+# Create a comment model for music
+class Comment4(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	content = db.Column(db.Text)
+	author = db.Column(db.String(255))
+	date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+	# Foreign Key To Link Users (refer to primary key of the user)
+	poster_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+
+# Create a comment model for music
+class Comment5(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	content = db.Column(db.Text)
+	author = db.Column(db.String(255))
+	date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+	# Foreign Key To Link Users (refer to primary key of the user)
+	poster_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 
@@ -325,19 +363,93 @@ def add_comment():
 	form = 	CommentForm()
 	if form.validate_on_submit():
 		poster = current_user.id
-		com = Comment(content=form.content.data, slug=form.slug.data, author=form.author.data, poster_id=poster, title=form.title.data)
+		com = Comment(content=form.content.data, author=form.author.data, poster_id=poster)
 		# Clear The Form
-		form.title.data = ''
 		form.author.data = ''
 		form.content.data = ''
-		form.slug.data = ''
 		# Add post data to database
 		db.session.add(com)
 		db.session.commit()
 		# Return a Message
 		flash("comment Submitted Successfully!")
 	# Redirect to the webpage 
-	return render_template("add_post.html", form=form)
+	return render_template("add_comment.html", form=form)
+
+@app.route('/add-commen', methods=['GET', 'POST'])
+@login_required
+def add_commen():
+	form = 	CommentForm()
+	if form.validate_on_submit():
+		poster = current_user.id
+		com = Comment2(content=form.content.data, author=form.author.data, poster_id=poster)
+		# Clear The Form
+		form.author.data = ''
+		form.content.data = ''
+		# Add post data to database
+		db.session.add(com)
+		db.session.commit()
+		# Return a Message
+		flash("comment Submitted Successfully!")
+	# Redirect to the webpage 
+	return render_template("add_comment.html", form=form)
+
+@app.route('/add-comme', methods=['GET', 'POST'])
+@login_required
+def add_comme():
+	form = 	CommentForm()
+	if form.validate_on_submit():
+		poster = current_user.id
+		com = Comment3(content=form.content.data, author=form.author.data, poster_id=poster)
+		# Clear The Form
+		form.author.data = ''
+		form.content.data = ''
+		# Add post data to database
+		db.session.add(com)
+		db.session.commit()
+		# Return a Message
+		flash("comment Submitted Successfully!")
+	# Redirect to the webpage 
+	return render_template("add_comment.html", form=form)
+
+
+@app.route('/add-comm', methods=['GET', 'POST'])
+@login_required
+def add_comm():
+	form = 	CommentForm()
+	if form.validate_on_submit():
+		poster = current_user.id
+		com = Comment4(content=form.content.data, author=form.author.data, poster_id=poster)
+		# Clear The Form
+		form.author.data = ''
+		form.content.data = ''
+		# Add post data to database
+		db.session.add(com)
+		db.session.commit()
+		# Return a Message
+		flash("comment Submitted Successfully!")
+	# Redirect to the webpage 
+	return render_template("add_comment.html", form=form)
+
+
+@app.route('/add-com', methods=['GET', 'POST'])
+@login_required
+def add_com():
+	form = 	CommentForm()
+	if form.validate_on_submit():
+		poster = current_user.id
+		com = Comment5(content=form.content.data, author=form.author.data, poster_id=poster)
+		# Clear The Form
+		form.author.data = ''
+		form.content.data = ''
+		# Add post data to database
+		db.session.add(com)
+		db.session.commit()
+		# Return a Message
+		flash("comment Submitted Successfully!")
+	# Redirect to the webpage 
+	return render_template("add_comment.html", form=form)
+
+
 
 
 @app.route('/posts')
@@ -370,6 +482,36 @@ def Lifestyles():
 	Lifestyles = Lifestyle.query.order_by(Lifestyle.date_posted)
 	return render_template("shoe.html", Lifestyles=Lifestyles)
 
+@app.route('/Comments')
+def Comments():
+	# Grab all the posts from the database
+	Comments = Comment.query.order_by(Comment.date_posted)
+	return render_template("add.html", Comments=Comments)
+
+@app.route('/Commen')
+def Commen():
+	# Grab all the posts from the database
+	Commen = Comment2.query.order_by(Comment2.date_posted)
+	return render_template("mus.html", Commen=Commen)
+
+@app.route('/Comme')
+def Comme():
+	# Grab all the posts from the database
+	Comme = Comment3.query.order_by(Comment3.date_posted)
+	return render_template("comme.html", Comme=Comme)
+
+@app.route('/Comm')
+def Comm():
+	# Grab all the posts from the database
+	Comm = Comment4.query.order_by(Comment4.date_posted)
+	return render_template("comm.html", Comm=Comm)
+
+
+@app.route('/Com')
+def Com():
+	# Grab all the posts from the database
+	Com = Comment5.query.order_by(Comment5.date_posted)
+	return render_template("com.html", Com=Com)
 
 
 @app.route('/posts/<int:id>')
@@ -397,9 +539,30 @@ def cloth(id):
 	cloth = Lifestyle.query.get_or_404(id)
 	return render_template('cloth.html', cloth=cloth)
 
+@app.route('/talks/<int:id>')
+def talks(id):
+	talk = Comment.query.get_or_404(id)
+	return render_template('talk.html', talk=talk)
+
 @app.route('/talk/<int:id>')
 def talk(id):
-	talk = Comment.query.get_or_404(id)
+	talk = Comment2.query.get_or_404(id)
+	return render_template('talk.html', talk=talk)
+
+@app.route('/tal/<int:id>')
+def tal(id):
+	talk = Comment3.query.get_or_404(id)
+	return render_template('talk.html', talk=talk)
+
+
+@app.route('/ta/<int:id>')
+def ta(id):
+	talk = Comment4.query.get_or_404(id)
+	return render_template('talk.html', talk=talk)
+
+@app.route('/t/<int:id>')
+def t(id):
+	talk = Comment5.query.get_or_404(id)
 	return render_template('talk.html', talk=talk)
 
 # Create Custom Error Pages
@@ -412,32 +575,30 @@ def page_not_found(e):
 @app.route('/posts/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_post(id):
-	news = Posts.query.get_or_404(id)
+	post = Posts.query.get_or_404(id)
 	form = PostForm()
 	if form.validate_on_submit():
-		news.title = form.title.data
- 		#post.author = form.author.data
-		news.slug = form.slug.data
-		news.content = form.content.data
+		post.title = form.title.data
+		#post.author = form.author.data
+		# post.slug = form.slug.data
+		post.content = form.content.data
 		# Update Database
-		db.session.add(news)
+		db.session.add(post)
 		db.session.commit()
 		flash("Post Has Been Updated!")
-		return render_template('edit.html', form=form)
-		
-		
+		return redirect(url_for('post', id=post.id))
 	
-	if current_user.id == news.poster_id or current_user.id == 14:
-		form.title.data = news.title
-		# form.author.data = post.author
-		form.slug.data = news.slug
-		form.content.data = news.content
+	if current_user.id == post.poster_id or current_user.id == 14:
+		form.title.data = post.title
+		#form.author.data = post.author
+		form.slug.data = post.slug
+		form.content.data = post.content
 		return render_template('edit.html', form=form)
-		
 	else:
 		flash("You Aren't Authorized To Edit This Post...")
 		posts = Posts.query.order_by(Posts.date_posted)
 		return render_template("posts.html", posts=posts)
+
 
 @app.route('/music/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -672,7 +833,134 @@ def delete_Lifestyle(id):
 			# Grab all the posts from the database
     posts = Lifestyle.query.order_by(Lifestyle.date_posted)
     return redirect(url_for('Lifestyles'))
-  
+
+
+@app.route('/comment/delete/<int:id>')
+@login_required
+def delete_comment(id):
+    post_to_delete = Comment.query.get_or_404(id) 
+    try:
+      db.session.delete(post_to_delete)
+      db.session.commit()
+
+			# Return a message
+      flash("Blog Post Was Deleted!")
+
+			# Grab all the posts from the database so as to return to the blog page
+      posts = Comment.query.order_by(Comment.date_posted)
+      return redirect(url_for('Comments'))
+
+
+    except:
+			# Return an error message
+     flash("Whoops! There was a problem deleting post, try again...")
+
+			# Grab all the posts from the database
+    posts = Comment.query.order_by(Comment.date_posted)
+    return redirect(url_for('Comments'))
+
+
+@app.route('/commen/delete/<int:id>')
+@login_required
+def delete_commen(id):
+    post_to_delete = Comment2.query.get_or_404(id) 
+    try:
+      db.session.delete(post_to_delete)
+      db.session.commit()
+
+			# Return a message
+      flash("Blog Post Was Deleted!")
+
+			# Grab all the posts from the database so as to return to the blog page
+      posts = Comment2.query.order_by(Comment2.date_posted)
+      return redirect(url_for('Commen'))
+
+
+    except:
+			# Return an error message
+     flash("Whoops! There was a problem deleting post, try again...")
+
+			# Grab all the posts from the database
+    posts = Lifestyle.query.order_by(Lifestyle.date_posted)
+    return redirect(url_for('Commen'))
+
+
+
+@app.route('/comme/delete/<int:id>')
+@login_required
+def delete_comme(id):
+    post_to_delete = Comment3.query.get_or_404(id) 
+    try:
+      db.session.delete(post_to_delete)
+      db.session.commit()
+
+			# Return a message
+      flash("Blog Post Was Deleted!")
+
+			# Grab all the posts from the database so as to return to the blog page
+      posts = Comment3.query.order_by(Comment3.date_posted)
+      return redirect(url_for('Comme'))
+
+
+    except:
+			# Return an error message
+     flash("Whoops! There was a problem deleting post, try again...")
+
+			# Grab all the posts from the database
+    posts = Comment3.query.order_by(Comment3.date_posted)
+    return redirect(url_for('Comme'))
+
+
+@app.route('/comm/delete/<int:id>')
+@login_required
+def delete_comm(id):
+    post_to_delete = Comment4.query.get_or_404(id) 
+    try:
+      db.session.delete(post_to_delete)
+      db.session.commit()
+
+			# Return a message
+      flash("Blog Post Was Deleted!")
+
+			# Grab all the posts from the database so as to return to the blog page
+      posts = Comment4.query.order_by(Comment4.date_posted)
+      return redirect(url_for('Comm'))
+
+
+    except:
+			# Return an error message
+     flash("Whoops! There was a problem deleting post, try again...")
+
+			# Grab all the posts from the database
+    posts = Comment4.query.order_by(Comment4.date_posted)
+    return redirect(url_for('Comm'))
+
+
+
+@app.route('/com/delete/<int:id>')
+@login_required
+def delete_com(id):
+    post_to_delete = Comment5.query.get_or_404(id) 
+    try:
+      db.session.delete(post_to_delete)
+      db.session.commit()
+
+			# Return a message
+      flash("Blog Post Was Deleted!")
+
+			# Grab all the posts from the database so as to return to the blog page
+      posts = Comment5.query.order_by(Comment5.date_posted)
+      return redirect(url_for('Com'))
+
+
+    except:
+			# Return an error message
+     flash("Whoops! There was a problem deleting post, try again...")
+
+			# Grab all the posts from the database
+    posts = Comment5.query.order_by(Comment5.date_posted)
+    return redirect(url_for('Com'))
+
 
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])

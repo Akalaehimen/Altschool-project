@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+<!-- <h3>Blog Post...</h3> -->
+<br/>
+{% for cloth in Com  %}
+<div class="div">
+
+		  <h2>{{ cloth.title }}</h2>
+       <small>By: {{ cloth.author}}</small><br/><br/>
+
+        {{ cloth.content}}<br/><br/>
+          
+        <small>{{ cloth.date_posted}}<br/><br/></small>
+       
+  </div>
+  <hr><br/>
+{% endfor %}
+{% endblock content %}
